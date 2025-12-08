@@ -8,24 +8,20 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task3.V5.Lib
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
+            
             int[,] result = (int[,])matrix.Clone();
 
-            for (int i = 0; i < rows - 1; i++)
-            {
-                for (int j = i + 1; j < rows; j++)
-                {
-                    if (result[i, 2] > result[j, 2]) // сортируем по 3-му столбцу
-                    {
-                        // меняем строки местами
-                        for (int k = 0; k < cols; k++)
-                        {
-                            int temp = result[i, k];
-                            result[i, k] = result[j, k];
-                            result[j, k] = temp;
-                        }
-                    }
-                }
-            }
+            
+            int[] thirdCol = new int[rows];
+            for (int i = 0; i < rows; i++)
+                thirdCol[i] = result[i, 2];
+
+            
+            Array.Sort(thirdCol);
+
+            
+            for (int i = 0; i < rows; i++)
+                result[i, 2] = thirdCol[i];
 
             return result;
         }

@@ -12,10 +12,12 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task3.V5
 
         private void buttonRes_YPV_Click(object sender, EventArgs e)
         {
+
             
             dataGridViewRes_YPV.Columns.Clear();
             dataGridViewRes_YPV.Rows.Clear();
 
+            
             dataGridViewRes_YPV.ColumnHeadersVisible = false;
             dataGridViewRes_YPV.RowHeadersVisible = false;
 
@@ -25,15 +27,17 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task3.V5
                 dataGridViewRes_YPV.Columns.Add($"Col{i + 1}", $"Column {i + 1}");
             }
 
+            
             dataGridViewRes_YPV.AllowUserToAddRows = false;
 
+            
             foreach (DataGridViewColumn col in dataGridViewRes_YPV.Columns)
             {
-                col.Width = 95;   // нужная ширина
+                col.Width = 95;
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-
+            // Исходная матрица
             int[,] matrix =
             {
                 { 30, -20,  7,  -8,  9 },
@@ -48,16 +52,14 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task3.V5
             
             int[,] result = ds.Calculate(matrix);
 
-           
+            
             for (int i = 0; i < result.GetLength(0); i++)
             {
                 object[] row = new object[result.GetLength(1)];
-
                 for (int j = 0; j < result.GetLength(1); j++)
                 {
                     row[j] = result[i, j];
                 }
-
                 dataGridViewRes_YPV.Rows.Add(row);
             }
         }
