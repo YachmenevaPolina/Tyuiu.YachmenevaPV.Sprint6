@@ -5,37 +5,36 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13.Lib
     {
         public int[,] GetMatrix(string path)
         {
-            string[] mass = File.ReadAllLines(path);
-            int s = 10;
-            for (int i = 0; i < s; i++)
+            string file = File.ReadAllText(path);
+            file = file.Replace('\n', '\r');
+            string[] lines = file.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            int rows = lines.Length;
+            int columns = lines[0].Split(';').Length;
+
+            int[,] array = new int[rows, columns];
+
+            for (int i = 0; i < rows; i++)
             {
-                mass[i] = mass[i].Replace(";", " ");
+                string[] line_mas = lines[i].Split(';');
+                for (int j = 0; j < columns; j++)
+                {
+                    array[i, j] = Convert.ToInt32(line_mas[j]);
+                }
             }
 
-            int[,] matrix = new int[s, s];
-            for (int i = 0; i < s; i++)
+            int rows_1 = array.GetUpperBound(0) + 1;
+            int columns_1 = array.GetUpperBound(1) + 1;
+            int targetColumn = 6;
+
+            for (int r = 0; r < rows_1; r++)
             {
-                int[] row = mass[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToArray();
-                for (int j = 0; j < s; j++)
+                if (array[r, targetColumn] > 0 && array[r, targetColumn] % 2 == 0)
                 {
-                    matrix[i, j] = row[j];
+                    array[r, targetColumn] = 111;
                 }
             }
-            int[,] res = new int[s, s];
-            int rows = matrix.GetUpperBound(0) + 1;
-            int columns = matrix.Length / rows;
-            int xCol = 6;
-            for (int r = 0; r < rows; r++)
-            {
-                for (int c = xCol; c <= xCol; c++)
-                {
-                    if ((matrix[r, c] > 0) && (matrix[r, c] % 2 == 0))
-                    {
-                        matrix[r, c] = 111;
-                    }
-                }
-            }
-            return matrix;
+            return array;
         }
     }
 }
