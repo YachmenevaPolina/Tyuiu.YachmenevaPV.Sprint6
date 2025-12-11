@@ -24,8 +24,8 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13.Lib
             }
 
             int rows_1 = array.GetUpperBound(0) + 1;
-            int columns_1 = array.GetUpperBound(1) + 1;
-            int targetColumn = 6;
+
+            int targetColumn = 5; 
 
             for (int r = 0; r < rows_1; r++)
             {
