@@ -89,35 +89,51 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
 
         private void buttonSave_YPV_Click(object sender, EventArgs e)
         {
+            // Настройка диалога сохранения
             saveFileDialogTask_YPV.FileName = "OutPutFileTask7V13.csv";
             saveFileDialogTask_YPV.InitialDirectory = Directory.GetCurrentDirectory();
             saveFileDialogTask_YPV.ShowDialog();
+
             string path = saveFileDialogTask_YPV.FileName;
-            FileInfo fileInfo = new FileInfo(path);
-            bool fileExzist = fileInfo.Exists;
-            if (fileExzist)
+
+            // Если пользователь нажал "Отмена"
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            // Если файл существует — удалить
+            if (File.Exists(path))
             {
                 File.Delete(path);
             }
+
             int rows = dataGridViewOut_YPV.RowCount;
-            int col = dataGridViewOut_YPV.ColumnCount;
-            string str = "";
+            int cols = dataGridViewOut_YPV.ColumnCount;
+
+            string result = "";
+
+            // Формирование CSV
             for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columns; j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    if (j != col - 1)
-                    {
-                        str += dataGridViewOut_YPV.Rows[i].Cells[j].Value + ";";
-                    }
-                    else
-                    {
-                        str += dataGridViewOut_YPV.Rows[i].Cells[j].Value;
-                    }
+                    result += dataGridViewOut_YPV.Rows[i].Cells[j].Value;
+
+                    if (j != cols - 1)
+                        result += ";";
                 }
+                result += Environment.NewLine;
             }
-            File.AppendAllText(path, str + Environment.NewLine);
-            str = "";
+
+            // Запись в файл
+            File.WriteAllText(path, result);
+
+            // Сообщение об успешном сохранении
+            MessageBox.Show(
+                "Файл успешно сохранён!",
+                "Сохранение",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
 
