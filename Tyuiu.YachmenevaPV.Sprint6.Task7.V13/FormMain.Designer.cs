@@ -44,17 +44,21 @@
             buttonSave_YPV = new Button();
             saveFileDialogTask_YPV = new SaveFileDialog();
             groupBoxButtons_YPV = new GroupBox();
+            panel1 = new Panel();
+            panel2 = new Panel();
             groupBoxTask_YPV.SuspendLayout();
             groupBoxIn_YPV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewIn_YPV).BeginInit();
             groupBoxOut_YPV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOut_YPV).BeginInit();
             groupBoxButtons_YPV.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBoxTask_YPV
             // 
-            groupBoxTask_YPV.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxTask_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBoxTask_YPV.Controls.Add(labelTask_YPV);
             groupBoxTask_YPV.Location = new Point(27, 204);
             groupBoxTask_YPV.Name = "groupBoxTask_YPV";
@@ -74,46 +78,46 @@
             // 
             // groupBoxIn_YPV
             // 
-            groupBoxIn_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBoxIn_YPV.Controls.Add(dataGridViewIn_YPV);
-            groupBoxIn_YPV.Location = new Point(27, 418);
+            groupBoxIn_YPV.Dock = DockStyle.Fill;
+            groupBoxIn_YPV.Location = new Point(0, 0);
             groupBoxIn_YPV.Name = "groupBoxIn_YPV";
-            groupBoxIn_YPV.Size = new Size(1418, 736);
+            groupBoxIn_YPV.Size = new Size(1222, 733);
             groupBoxIn_YPV.TabIndex = 1;
             groupBoxIn_YPV.TabStop = false;
             groupBoxIn_YPV.Text = "Ввод:";
             // 
             // dataGridViewIn_YPV
             // 
-            dataGridViewIn_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             dataGridViewIn_YPV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewIn_YPV.Location = new Point(17, 55);
+            dataGridViewIn_YPV.Dock = DockStyle.Fill;
+            dataGridViewIn_YPV.Location = new Point(3, 43);
             dataGridViewIn_YPV.Name = "dataGridViewIn_YPV";
             dataGridViewIn_YPV.ReadOnly = true;
             dataGridViewIn_YPV.RowHeadersWidth = 102;
-            dataGridViewIn_YPV.Size = new Size(1377, 667);
+            dataGridViewIn_YPV.Size = new Size(1216, 687);
             dataGridViewIn_YPV.TabIndex = 0;
             // 
             // groupBoxOut_YPV
             // 
-            groupBoxOut_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             groupBoxOut_YPV.Controls.Add(dataGridViewOut_YPV);
-            groupBoxOut_YPV.Location = new Point(1470, 418);
+            groupBoxOut_YPV.Dock = DockStyle.Fill;
+            groupBoxOut_YPV.Location = new Point(0, 0);
             groupBoxOut_YPV.Name = "groupBoxOut_YPV";
-            groupBoxOut_YPV.Size = new Size(1333, 736);
+            groupBoxOut_YPV.Size = new Size(1574, 736);
             groupBoxOut_YPV.TabIndex = 2;
             groupBoxOut_YPV.TabStop = false;
             groupBoxOut_YPV.Text = "Вывод:";
             // 
             // dataGridViewOut_YPV
             // 
-            dataGridViewOut_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             dataGridViewOut_YPV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOut_YPV.Location = new Point(20, 55);
+            dataGridViewOut_YPV.Dock = DockStyle.Fill;
+            dataGridViewOut_YPV.Location = new Point(3, 43);
             dataGridViewOut_YPV.Name = "dataGridViewOut_YPV";
             dataGridViewOut_YPV.ReadOnly = true;
             dataGridViewOut_YPV.RowHeadersWidth = 102;
-            dataGridViewOut_YPV.Size = new Size(1293, 667);
+            dataGridViewOut_YPV.Size = new Size(1568, 690);
             dataGridViewOut_YPV.TabIndex = 0;
             // 
             // buttonFile_YPV
@@ -146,7 +150,7 @@
             buttonInfo_YPV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonInfo_YPV.FlatStyle = FlatStyle.Flat;
             buttonInfo_YPV.Image = (Image)resources.GetObject("buttonInfo_YPV.Image");
-            buttonInfo_YPV.Location = new Point(2542, 30);
+            buttonInfo_YPV.Location = new Point(2617, 30);
             buttonInfo_YPV.Name = "buttonInfo_YPV";
             buttonInfo_YPV.Size = new Size(188, 150);
             buttonInfo_YPV.TabIndex = 5;
@@ -173,25 +177,43 @@
             // 
             // groupBoxButtons_YPV
             // 
-            groupBoxButtons_YPV.Anchor = AnchorStyles.Top;
             groupBoxButtons_YPV.Controls.Add(buttonInfo_YPV);
             groupBoxButtons_YPV.Controls.Add(buttonSave_YPV);
             groupBoxButtons_YPV.Controls.Add(buttonFile_YPV);
             groupBoxButtons_YPV.Controls.Add(buttonDone_YPV);
-            groupBoxButtons_YPV.Location = new Point(27, 12);
+            groupBoxButtons_YPV.Dock = DockStyle.Top;
+            groupBoxButtons_YPV.Location = new Point(0, 0);
             groupBoxButtons_YPV.Name = "groupBoxButtons_YPV";
-            groupBoxButtons_YPV.Size = new Size(2756, 186);
+            groupBoxButtons_YPV.Size = new Size(2831, 186);
             groupBoxButtons_YPV.TabIndex = 3;
             groupBoxButtons_YPV.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(groupBoxOut_YPV);
+            panel1.Location = new Point(1245, 418);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1574, 736);
+            panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            panel2.Controls.Add(groupBoxIn_YPV);
+            panel2.Location = new Point(17, 418);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1222, 733);
+            panel2.TabIndex = 5;
             // 
             // FormMain_YPV
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2831, 1166);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(groupBoxButtons_YPV);
-            Controls.Add(groupBoxOut_YPV);
-            Controls.Add(groupBoxIn_YPV);
             Controls.Add(groupBoxTask_YPV);
             Name = "FormMain_YPV";
             Text = "Спринт 6 | Таск 7 | Вариант 13 | Ячменёва П.В.";
@@ -202,6 +224,8 @@
             groupBoxOut_YPV.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewOut_YPV).EndInit();
             groupBoxButtons_YPV.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -221,5 +245,7 @@
         private SaveFileDialog saveFileDialogTask_YPV;
         private Button buttonSave_YPV;
         private GroupBox groupBoxButtons_YPV;
+        private Panel panel1;
+        private Panel panel2;
     }
 }

@@ -15,7 +15,14 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
 
             dataGridViewIn_YPV.ReadOnly = true;
             dataGridViewOut_YPV.ReadOnly = true;
+            dataGridViewIn_YPV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewOut_YPV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Растягивать DataGridView по контейнеру (Panel / SplitContainer)
+            dataGridViewIn_YPV.Dock = DockStyle.Fill;
+            dataGridViewOut_YPV.Dock = DockStyle.Fill;
             
+
         }
 
         DataService ds = new DataService();
@@ -53,8 +60,8 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
             dataGridViewOut_YPV.RowCount = rows;
             for (int i = 0; i < columns; i++)
             {
-                dataGridViewIn_YPV.Columns[i].Width = 100;
-                dataGridViewOut_YPV.Columns[i].Width = 100;
+                dataGridViewIn_YPV.Columns[i].Width = 70;
+                dataGridViewOut_YPV.Columns[i].Width = 70;
             }
             for (int i = 0; i < rows; i++)
             {
@@ -65,6 +72,7 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
             }
             arrayValues = ds.GetMatrix(openFilePath);
             buttonDone_YPV.Enabled = true;
+            
         }
 
         private void buttonDone_YPV_Click(object sender, EventArgs e)
@@ -79,17 +87,18 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
                 }
             }
             buttonSave_YPV.Enabled = true;
+            
         }
 
-        private void buttonInfo_YPV_Click(object sender, EventArgs e) 
-        { 
-            FormAbout_YPV form = new FormAbout_YPV(); 
-            form.ShowDialog(); 
+        private void buttonInfo_YPV_Click(object sender, EventArgs e)
+        {
+            FormAbout_YPV form = new FormAbout_YPV();
+            form.ShowDialog();
         }
 
         private void buttonSave_YPV_Click(object sender, EventArgs e)
         {
-            // Настройка диалога сохранения
+            // Настройка сохранения
             saveFileDialogTask_YPV.FileName = "OutPutFileTask7V13.csv";
             saveFileDialogTask_YPV.InitialDirectory = Directory.GetCurrentDirectory();
             saveFileDialogTask_YPV.ShowDialog();
@@ -136,8 +145,10 @@ namespace Tyuiu.YachmenevaPV.Sprint6.Task7.V13
             );
         }
 
+        private void FormMain_YPV_Load(object sender, EventArgs e)
+        {
 
-
+        }
 
     }
 }
